@@ -19,41 +19,48 @@ Let's start with an easy one. I've provided you with the minimum number of model
 You're creating a simple Medium clone where people can write blog posts and comment on other people's blog posts. You want to have enough information to show the latest blog posts, blog posts for specific authors, and blog posts for specific categories. Categories and Authors need to match exactly for us to do this, so we'll make them their own models.
 
 ## Blog Post Model
-1. user_id - integer - id for the owner of this blog.
-2. created_at - datetime - when blog was created.
-3. updated_at - datetime - when blog was updated.
+1. user_id - integer - id for the owner of
+   this blog.
+2. created_at - datetime - when blog was
+   created.
+3. updated_at - datetime - when blog was
+   updated.
 4. id - integer - id for post.
+5. author_id - integer - author id.
+6. category_id - integer - category id.
 
 ## Comment Model
-1. comment_id - string - reader responses.
-2. likes - integer - how many likes post received.
+1. comment - string - reader responses.
+2. likes - integer - how many likes comment
+   received.
+3. comment_id - integer - comment id.
 
 ## Author Model
-1. user_id - integer - id for owner of blog.
-2. post_id - integer - id for this post.
+1. name - string - name of author.
+2. image - string - author image.
 
 ## Category Model
-1. user_id - integer - id for owner of blog.
-2. post_id - integer - id for this post.
+1. topic- string - topic of blog.
+
 
 # Quest 2 - Twitter Clone
 
 You're creating a Twitter clone. People can create tweets, follow other people and have followers. Keep in mind, unlike the blog post example where a comment is a separate entity, tweets responding to other tweets are still just tweets. Also, think about how Twitter turns a tweet into useful information. Do you think they scan tweets for @mentions and hashtags, or are they storing that kind of thing as additional fields? What models do we need to recreate Twitter?
 
 ## Tweet Model
-1. user_id - integer - id for owner of account.
-2. tweet_id - integer - id for individual tweets.
+1. user_id - integer - id for owner of
+   account.
+2. id - integer - id for individual tweets.
 3. retweet_id - integer - id for retweets.
+4. tweet - string - tweet.
 
 ## Following Model
-1. following_id - integer - id for people you follow.
-
-## Followers Model
-1. followers_id - integer - id for people following you.
+1. follower_id - integer - user_id for who is following's id
+2. followed_id - integer - user_id for who is being followed
 
 ## Like Model
-1. like_id - integer - id for likes, not necessarily from followers.
-2. followers_id - integer - id from followers.
+1. user_id
+2. tweet_id
 
 
 
