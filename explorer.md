@@ -19,18 +19,41 @@ Let's start with an easy one. I've provided you with the minimum number of model
 You're creating a simple Medium clone where people can write blog posts and comment on other people's blog posts. You want to have enough information to show the latest blog posts, blog posts for specific authors, and blog posts for specific categories. Categories and Authors need to match exactly for us to do this, so we'll make them their own models.
 
 ## Blog Post Model
+1. user_id - integer - id for the owner of this blog.
+2. created_at - datetime - when blog was created.
+3. updated_at - datetime - when blog was updated.
+4. id - integer - id for post.
 
 ## Comment Model
+1. comment_id - string - reader responses.
+2. likes - integer - how many likes post received.
 
 ## Author Model
+1. user_id - integer - id for owner of blog.
+2. post_id - integer - id for this post.
 
 ## Category Model
-
-
+1. user_id - integer - id for owner of blog.
+2. post_id - integer - id for this post.
 
 # Quest 2 - Twitter Clone
 
 You're creating a Twitter clone. People can create tweets, follow other people and have followers. Keep in mind, unlike the blog post example where a comment is a separate entity, tweets responding to other tweets are still just tweets. Also, think about how Twitter turns a tweet into useful information. Do you think they scan tweets for @mentions and hashtags, or are they storing that kind of thing as additional fields? What models do we need to recreate Twitter?
+
+## Tweet Model
+1. user_id - integer - id for owner of account.
+2. tweet_id - integer - id for individual tweets.
+3. retweet_id - integer - id for retweets.
+
+## Following Model
+1. following_id - integer - id for people you follow.
+
+## Followers Model
+1. followers_id - integer - id for people following you.
+
+## Like Model
+1. like_id - integer - id for likes, not necessarily from followers.
+2. followers_id - integer - id from followers.
 
 
 
@@ -38,8 +61,58 @@ You're creating a Twitter clone. People can create tweets, follow other people a
 
 You're building a site that associates data with specific variations of specific cars. You need to break the data down from the manufacturer to the specific model. In other words, you need to model in such detail that the system knows that a 2007 Mustang and a 2013 Mustang are the _same_ thing (from the 5th Generation, 2005-2014), but that a 2015 Mustang is different from both of those. The car models should also know general information about the cars.
 
+## car Model
+1. car_id - integer - id for specific car.
+
+## manufacturer Model
+1. manufacturer_id - integer - vin number.
+2. car_id - integer - id for specific car.
+
+## model Model
+1. model_id - integer - id for specific model.
+2. manufacturer_id - integer - vin number.
+
+## year Model
+1. year_id - integer - id for datetime of car.
+2. model_id - integer - id for specific model.
+
+## generation Model
+1. generation_id - integer - id for specific generation.
+2. year_id - integer - id for datetime of car.
+
 
 
 # Quest 4 - DC Comics
 
 You've used the Marvel API quite a bit. Let's model a comic site of our own for DC. You'll need to think about the fact that there are characters (the superheroes), comics (the actual issues), series (the collections of issues), events (which consist of many issues), artists, writers, et cetera. This is an incredibly deep rabbit hole. Create at least 5 models that would be able to provide enough information for someone to build all of our Marvel apps, but in the DC universe.
+
+## characters Model
+1. character_id - integer - character id
+2. comic_id - integer - id of specific comic.
+3. events_id - integer - id of specific events.
+4. series_id - integer - id of specific series.
+
+## comic Model
+1. comic_id - integer - id of specific comic.
+2. series_id - integer - id of specific series.
+3. events_id - integer - id of specific events.
+
+## events Model
+1. series_id - integer - id of specific series.
+2. comic_id - integer - id of specific comic.
+3. character_id - integer - character id
+
+## series Model
+1. character_id - integer - character id
+2. comic_id - integer - id of specific comic.
+3. events_id - integer - id of specific events.
+
+## artists Model
+1. artists_id - integer - artist id.
+2. character_id - integer - character id
+3. comic_id - integer - id of specific comic.
+4. events_id - integer - id of specific events.
+5. series_id - integer - id of specific series.
+
+## writers Model
+1. writer_id - integer - writer id.
