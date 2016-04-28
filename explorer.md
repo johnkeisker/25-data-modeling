@@ -26,14 +26,17 @@ You're creating a simple Medium clone where people can write blog posts and comm
 3. updated_at - datetime - when blog was
    updated.
 4. id - integer - id for post.
-5. author_id - integer - author id.
+5. title - string - title.
 6. category_id - integer - category id.
+7. content - string - content.
+
 
 ## Comment Model
 1. comment - string - reader responses.
 2. likes - integer - how many likes comment
    received.
-3. comment_id - integer - comment id.
+3. id - integer - comment id.
+4. author id - string - author.
 
 ## Author Model
 1. name - string - name of author.
@@ -64,7 +67,6 @@ You're creating a Twitter clone. People can create tweets, follow other people a
 1. user_id - string - name of individual
    liking the tweet.
 2. tweet_id - integer - id of the tweet.
-3. amount - integer - amount of likes.
 
 ## Hashtag Model
 1. name - string - Hashtag name.
@@ -77,64 +79,46 @@ You're creating a Twitter clone. People can create tweets, follow other people a
 
 You're building a site that associates data with specific variations of specific cars. You need to break the data down from the manufacturer to the specific model. In other words, you need to model in such detail that the system knows that a 2007 Mustang and a 2013 Mustang are the _same_ thing (from the 5th Generation, 2005-2014), but that a 2015 Mustang is different from both of those. The car models should also know general information about the cars.
 
-## car Model
-1. id - integer - id for specific car(vin
-   number).
-2. name - string - car name.
-
 ## manufacturer Model
 1. id - integer - model id.
-2. car_id - integer - id for specific car.
 3. name - string - manufacturer name.
 
 ## model Model
 1. id - integer - id for specific model.
-2. car_id - integer - id for specific car.
 3. year - integer - id for datetime of car.
 4. name - string - car model name.
+5. manufacturer_id
 
 ## generation Model
 1. id - integer - id for specific
    generation.
 2. year - integer - id for datetime of car.
+3. model_id - integer
 
+## car Model
+1. id - integer - id for specific car(vin
+   number).
+2. name - string - car name.
+3. generation_id
 
 
 # Quest 4 - DC Comics
 
 You've used the Marvel API quite a bit. Let's model a comic site of our own for DC. You'll need to think about the fact that there are characters (the superheroes), comics (the actual issues), series (the collections of issues), events (which consist of many issues), artists, writers, et cetera. This is an incredibly deep rabbit hole. Create at least 5 models that would be able to provide enough information for someone to build all of our Marvel apps, but in the DC universe.
 
-## characters Model
-1. id - integer - character id
-2. comic_id - integer - id of comic.
-3. events_id - integer - id of events.
-4. series_id - integer - id of series.
-5. name - string - name of character.
+## series Model
+1. name
 
 ## comics Model
 1. id - integer - id of specific comic.
 2. series_id - integer - id of series.
-3. events_id - integer - id of events.
 4. name - string - name of comics.
+5. number
 
-## events Model
-1. series_id - integer - id of series.
-2. id - integer - id of event.
-3. character_id - integer - character id.
+## characters Model
+1. id - integer - character id
+2. name - string - name of character.
 
-## series Model
-1. events_id - integer - id of events.
-
-## artists Model
-1. name - string - artist id.
-2. character_id - integer - character id
-3. comic_id - integer - id of comic.
-4. events_id - integer - id of events.
-5. series_id - integer - id of series.
-
-## writers Model
-1. name- string - writer id.
-2. character_id - integer - character id
-3. comic_id - integer - id of comic.
-4. events_id - integer - id of events.
-5. series_id - integer - id of series.
+## apperances
+1. character_id
+2. comic_id
